@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Poppins  google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- font-awesome cdn  link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- our styling starts here -->
+    <style>
+        *{
+            font-family:Poppins , sans-serif;
+        }
+        body{
+            margin:0;
+        }
+        a{
+            text-decoration:none;
+        }
+        .navbar{
+            height:70px;
+            box-sizing:border-box;
+            padding: 0 30px;
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+            align-items:center;
+            background:#1b1b11;
+            z-index:100;
+        }
+        .navbar .logo{
+            color:white;
+            text-transform:uppercase;
+            font-size:18px;
+        }
+        .navbar .nav{
+            list-style:none;
+            display:flex;
+            flex-direction:row;
+            gap:20px;
+            align-items:center;
+        }
+        .navbar .nav .nav-link{
+            font-weight:500;
+            color:white;
+            font-size:18px;
+            text-transform:uppercase;
+            transition:all 0.3s ease;
+        }
+        .navbar .nav .nav-link:hover{
+            color:blue;
+        }
+        .login-btn{
+            background:green;
+            color:white;
+            font-size:20px;
+            width:120px;
+            height:40px;
+            border-radius:5px;
+            outline:none;
+            border:None;
+            cursor:pointer;
+            transition:all 0.3s ease;
+        }
+        .login-btn:hover{
+            background:darkgreen;
+        }
+        /* form design starts here */
+        .container{
+            background:rgba(0,0,0,0.4);
+            position:fixed;
+            top:0;
+            left:0;
+            height:100%;
+            width:100%;
+            display:none;
+        }
+        .form{
+            overflow:auto;
+            background:white;
+            width:500px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            height:fit-content;
+            box-sizing:border-box;
+            padding:60px 0 0 0;
+            margin:auto;
+            box-shadow:0 4px  14px rgba(0,0,0,0.5);
+            border-radius:5px;
+            transition:all 0.3s ease;
+            position:relative;
+            animation:zoom 0.6s;
+            margin:50px auto 0 auto;
+        }
+        @keyframes zoom{
+            from{
+                transform:scale(0);
+            }
+            to{
+                transform:scale(1);
+            }
+        }
+        .form .back{
+            width:fit-content;
+            position:absolute;
+            font-size:30px;
+            right:15px;
+            top:10px;
+            cursor:pointer;
+            transition: all 0.3s ease;
+        }
+        .form .back:hover{
+            color:crimson;
+        }
+      .form  div{
+            width:100%;
+        }
+        .form .inputs{
+            margin:20px 0;
+        }
+        .form .inputs input{
+            height:40px;
+            border-radius:2px;
+            padding-left:10px;
+            box-sizing:border-box;
+            outline:none;
+            font-size:15px;
+            border:1px solid grey;
+            width:92%;
+            margin:10px 20px;
+        }
+        .form .inputs input[type="submit"]{
+            background:green;
+            color:white;
+            font-size:18px;
+        }
+        .form .inputs input[type="submit"]:hover{
+            background:darkgreen;
+        }
+        .form label{
+            margin-left:20px;
+        }
+        .form .cancel-btn{
+            background:crimson;
+            color:white;
+            font-size:20px;
+            width:120px;
+            height:40px;
+            border-radius:5px;
+            outline:none;
+            border:none;
+            transition:all 0.3s ease;
+            cursor:pointer;
+        }
+        .form .cancel-btn:hover{
+            background:green;
+        }
+        .form .admin{
+            width:150px;
+            height:150px;
+        }
+        .form .admin .form-img{
+            width:inherit;
+            height:inherit;
+            border-radius:50%;
+            border:3px solid grey;
+        }
+        .form .cancel{
+            width:100%;
+            padding:10px 10px;
+            box-sizing:border-box;
+            background:#bdb9b9;
+            margin-top:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .form .cancel .forget{
+            width:250px;
+        }
+        .form .cancel .forget a{
+            color:blue;
+        }
+        @media screen and (max-width:600px){
+            .form{
+                width:95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Tech Skills</h1>
+        </div>
+        <ul class="nav">
+            <li class="nav-item"><a href="#" class="nav-link">home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">about us</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">products</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">contact us</a></li>
+            <button type="button" class="login-btn">Login</button>
+        </ul>
+    </nav>
+       <div class="container">
+        <form action="" class="form">
+            <div class="back">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="admin">
+                <img src="admin.png" class="form-img" alt="">
+            </div>
+            <div class="inputs">
+               <div class="username-container">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Username" class="username">
+               </div>
+               <div class="password-container">
+                <label for="password" >Password:</label>
+                <input type="password" placeholder="Password" id="password" class="password">
+               </div>
+               <input type="Submit" value="Login">
+            </div>
+            <div class="cancel">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <a href="#">Forget password?</a>
+           </div>
+        </form>
+       </div>
+    <script>
+        const loginBtn = document.querySelector('.login-btn');
+        const container = document.querySelector('.container');
+        const cancel = document.querySelector('.cancel-btn');
+        const back = document.querySelector('.back i');
+        const body = document.querySelector('body');
+        loginBtn.onclick = ()=>{
+            container.style.display = "block";
+            loginBtn.style.display = "none";
+        }
+        cancel.onclick = ()=>{
+            container.style.display = "none";
+            loginBtn.style.display = "block";
+        }
+        back.onclick = ()=>{
+            container.style.display = "none";
+            loginBtn.style.display = "block";
+        }
+        window.onclick = function(event){
+            if(event.target == container){
+                container.style.display= "none";
+                loginBtn.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
